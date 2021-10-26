@@ -1,17 +1,16 @@
-const exp       = require("constants")
 const express   = require("express")
 
 const path      = require("path")
 const Rollbar   = require("rollbar")
+const app       = express()
 
-let rollbar = Rollbar({
+let rollbar = new Rollbar({
     accessToken: 'bc0a75ee4cbb4e39933c2f9397b18930',
-    captureUncaught:            true,
-    catureUnhandledRejections:  true,
+    captureUncaught: true,
+    captureUnhandledRejections: true
 
 })
 
-const app = express()
 
 
 app.get('/', (req, res) => {
@@ -21,4 +20,4 @@ app.get('/', (req, res) => {
 
 const port = process.env.PORT || 4545
 
-app.listen(4545, () => console.log(`runnin on ${port} ong`))
+app.listen(port, () => console.log(`runnin on ${port}`))
